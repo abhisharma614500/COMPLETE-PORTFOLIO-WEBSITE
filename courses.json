@@ -1,0 +1,32 @@
+{
+  "platform_name": "Abhishek Thor Clone",
+  "last_updated": "2026-09-13T10:00:00Z",
+  "batches": [
+    {
+      "batch_id": "BATCH_NDA_2026",
+      "batch_title": "NDA Foundation Batch",
+      "subjects": [
+        {
+          "subject_id": "SUB_MATHS_01",
+          "subject_name": "Mathematics",
+          "lectures": [
+            {
+              "lecture_id": "LEC_MATH_001",
+              "title": "Algebra Basics",
+              "video_provider": "Cloudflare Stream",
+              "video_url": "https://cloudflarestream.com/real_video_id",
+              "notes_url": "https://storage.googleapis.com/nda/algebra1.pdf"
+            },
+            {
+              "lecture_id": "LEC_MATH_002",
+              "title": "Geometry Fundamentals",
+              "video_provider": "AWS S3",
+              "video_url": "https://s3.amazonaws.com/bucket/geometry2.mp4",
+              "notes_url": "https://storage.googleapis.com/nda/geometry2.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
