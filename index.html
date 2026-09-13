@@ -3,165 +3,155 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>मल्टी-प्लेटफ़ॉर्म कोचिंग एग्रीगेटर पोर्टल — अभिषेक शर्मा</title>
+    <title>प्रीमियम डिजिटल कोचिंग एग्रीगेटर पोर्टल — अभिषेक शर्मा</title>
     <style>
-        body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f172a; color: #f8fafc; padding: 20px; margin: 0; }
-        .container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 350px 1fr; gap: 20px; }
-        .header-main { grid-column: 1 / -1; text-align: center; background: #1e293b; padding: 15px; border-radius: 12px; border-bottom: 4px solid #38bdf8; }
-        .header-main h1 { color: #38bdf8; margin: 0; font-size: 28px; }
-        .owner-tag { color: #34d399; font-weight: bold; margin-top: 5px; letter-spacing: 1px; }
-        .sidebar { background: #1e293b; padding: 20px; border-radius: 12px; border: 1px solid #334155; }
-        .main-content { display: flex; flex-direction: column; gap: 20px; }
-        .video-box { background: #000; padding: 10px; border-radius: 12px; border: 1px solid #334155; }
-        .server-btn { width: 100%; background: #334155; color: #cbd5e1; border: 1px solid #475569; padding: 14px; margin-bottom: 12px; border-radius: 8px; text-align: left; font-weight: 600; cursor: pointer; transition: 0.2s; }
-        .server-btn:hover { background: #1e1b4b; border-color: #38bdf8; color: #38bdf8; }
+        :root {
+            --bg-main: #0b0f19;
+            --bg-card: #151f32;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --text: #f8fafc;
+            --success: #10b981;
+        }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg-main); color: var(--text); padding: 20px; margin: 0; }
+        .container { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 320px 1fr; gap: 25px; }
         
-        /* 🔐 ऑथेंटिकेशन पॉपअप */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 1000; }
-        .modal-content { background: #1e293b; padding: 30px; border-radius: 16px; border: 2px solid #38bdf8; width: 90%; max-width: 400px; }
-        .modal-content h3 { color: #fbbf24; margin-top: 0; text-align: center; }
-        .input-group { margin-bottom: 15px; }
-        .input-group label { display: block; margin-bottom: 5px; color: #94a3b8; font-size: 14px; }
-        .input-group input { width: 100%; padding: 10px; background: #0f172a; border: 1px solid #334155; border-radius: 6px; color: #fff; box-sizing: border-box; }
-        .modal-btn { width: 100%; padding: 12px; background: #38bdf8; color: #0f172a; border: none; border-radius: 6px; font-weight: bold; font-size: 16px; cursor: pointer; }
+        /* ⚡ हेडर */
+        .header-main { grid-column: 1 / -1; text-align: center; background: linear-gradient(135deg, #1e293b, #0f172a); padding: 25px; border-radius: 16px; border: 1px solid #334155; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3); position: relative; overflow: hidden; }
+        .header-main h1 { color: var(--accent); margin: 0; font-size: 32px; font-weight: 800; letter-spacing: 0.5px; }
+        .owner-tag { display: inline-block; background: rgba(52, 211, 153, 0.1); color: #34d399; font-weight: 700; margin-top: 10px; padding: 6px 16px; border-radius: 20px; font-size: 14px; border: 1px solid rgba(52, 211, 153, 0.2); }
         
-        /* 📦 कोर्स और क्विज़ ब्लॉक */
-        .status-panel { background: #1e1b4b; border-left: 5px solid #10b981; padding: 15px; border-radius: 4px; display: none; }
-        .quiz-panel { display: none; background: #1e293b; padding: 25px; border-radius: 12px; border: 1px solid #334155; }
-        .question { background: #334155; padding: 15px; margin-bottom: 15px; border-radius: 8px; border-left: 5px solid #38bdf8; }
-        .badge { background: #4f46e5; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; }
-        .option { background: #475569; padding: 12px; margin: 8px 0; border-radius: 6px; cursor: pointer; display: block; transition: 0.2s; }
-        .option:hover { background: #334155; border-left: 3px solid #38bdf8; }
-        .submit-test-btn { display: block; width: 100%; padding: 15px; background: #10b981; color: white; border: none; border-radius: 8px; font-weight: bold; font-size: 18px; cursor: pointer; }
-        .score-card { background: #1e1b4b; border: 2px solid #4f46e5; padding: 20px; border-radius: 10px; margin-bottom: 20px; display: none; text-align: center; }
+        /* 🌐 साइडबार */
+        .sidebar { background: var(--bg-card); padding: 25px; border-radius: 16px; border: 1px solid #24324d; height: fit-content; }
+        .sidebar h3 { color: #fbbf24; margin-top: 0; font-size: 18px; border-bottom: 2px solid #24324d; padding-bottom: 12px; }
+        .server-btn { width: 100%; background: #1e293b; color: #cbd5e1; border: 1px solid #334155; padding: 15px; margin-bottom: 12px; border-radius: 10px; text-align: left; font-weight: 600; font-size: 15px; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: space-between; }
+        .server-btn:hover { background: #1e1b4b; border-color: var(--accent); color: var(--accent); transform: translateX(5px); }
+        
+        /* 🎬 मेन कंटेंट */
+        .main-content { display: flex; flex-direction: column; gap: 25px; }
+        
+        /* 📺 वीडियो प्लेयर */
+        .video-box { background: #000; padding: 12px; border-radius: 16px; border: 1px solid #24324d; box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+        .video-box h4 { color: var(--success); margin: 0 0 10px 0; font-size: 14px; letter-spacing: 1px; display: flex; align-items: center; gap: 6px; }
+        .video-box h4::before { content: ''; display: inline-block; width: 8px; height: 8px; background: var(--success); border-radius: 50%; box-shadow: 0 0 8px var(--success); }
+        video { width: 100%; border-radius: 10px; background: #000; outline: none; }
+        
+        /* 🔍 सर्च और लाइव डेटा पैनल */
+        .search-box { width: 100%; padding: 12px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: white; margin-bottom: 15px; box-sizing: border-box; }
+        .status-panel { background: #111c3a; border-left: 5px solid var(--success); padding: 20px; border-radius: 12px; display: none; border: 1px solid #1e293b; }
+        .status-panel h4 { margin: 0 0 12px 0; font-size: 18px; color: #fff; }
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 15px; padding: 0; list-style: none; }
+        .course-card-item { background: var(--bg-card); padding: 15px; border-radius: 10px; border: 1px solid #24324d; font-size: 14px; font-weight: 500; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; transition: 0.2s; }
+        .course-card-item:hover { border-color: var(--accent); background: #1c2b46; }
+        .join-btn { background: var(--accent); color: #0b0f19; border: none; padding: 8px; border-radius: 6px; font-weight: bold; cursor: pointer; text-align: center; font-size: 12px; }
+        
+        /* 📝 लाइव क्विज़ पोर्टल */
+        .quiz-panel { display: none; background: var(--bg-card); padding: 30px; border-radius: 16px; border: 1px solid #24324d; }
+        .question { background: #1e293b; padding: 20px; margin-bottom: 20px; border-radius: 12px; border-left: 5px solid var(--accent); }
+        .badge { background: #4f46e5; color: white; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; margin-right: 8px; }
+        .option { background: #2d3d5a; padding: 14px; margin: 10px 0; border-radius: 8px; cursor: pointer; display: block; transition: 0.2s; border: 1px solid transparent; }
+        .option:hover { background: #1e293b; border-color: var(--accent); }
+        .submit-test-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 12px; font-weight: bold; font-size: 18px; cursor: pointer; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); }
+        .score-card { background: #10b981; color: #0b0f19; padding: 25px; border-radius: 12px; margin-bottom: 25px; display: none; text-align: center; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <div class="container">
+        <!-- मुख्य हेडर -->
         <div class="header-main">
-            <h1>📚 मल्टी-प्लेटफ़ॉर्म कोचिंग एग्रीगेटर पोर्टल 📚</h1>
-            <div class="owner-tag">⚡ CONTROLLED BY: ABHISHEK SHARMA ⚡</div>
+            <h1>📚 नेशनल डिजिटल कोचिंग इंटीग्रेटर प्लेटफ़ॉर्म </h1>
+            <div class="owner-tag">⚡ SYSTEM SUPERVISOR: ABHISHEK SHARMA ⚡</div>
         </div>
 
+        <!-- लेफ्ट साइडबार -->
         <div class="sidebar">
-            <h3 style="color: #fbbf24; border-bottom: 1px solid #334155; padding-bottom: 8px; margin-top: 0;">🌐 कोचिंग सर्वर्स</h3>
-            <button class="server-btn" onclick="openLoginGate('careerwill')">📚 Careerwill Server</button>
-            <button class="server-btn" onclick="openLoginGate('utkarsh')">🎯 Utkarsh Server</button>
-            <button class="server-btn" onclick="openLoginGate('testbook')">📝 Testbook Server</button>
-            <button class="server-btn" onclick="openLoginGate('khansir')">👨‍🏫 Khan Sir Server</button>
+            <h3>🌐 उपलब्ध एजुकेशनल सर्वर्स</h3>
+            <button class="server-btn" onclick="loadGenuineData('careerwill')">📚 Careerwill Portal <span>➔</span></button>
+            <button class="server-btn" onclick="loadGenuineData('khansir')">👨‍🏫 Khan Sir Academy <span>➔</span></button>
+            <button class="server-btn" onclick="loadGenuineData('utkarsh')">🎯 Utkarsh Classes <span>➔</span></button>
+            <button class="server-btn" onclick="loadGenuineData('testbook')">📝 Testbook Test Center <span>➔</span></button>
         </div>
 
+        <!-- राइट कंटेंट -->
         <div class="main-content">
+            <!-- वीडियो प्लेयर -->
             <div class="video-box">
-                <h4 style="color:#34d399; margin: 0 0 8px 0;">🎬 NATIVE VIDEO PLAYER ENGINE</h4>
-                <video width="100%" height="380" controls autoplay>
+                <h4>LIVE INFRASTRUCTURE VIDEO STREAM</h4>
+                <video width="100%" height="400" controls autoplay muted loop>
                     <source src="https://w3schools.com" type="video/mp4">
                 </video>
             </div>
 
+            <!-- लाइव कोर्स फ़ेचर (सर्च बार के साथ) -->
             <div class="status-panel" id="statusPanel">
-                <h4 style="color: #10b981; margin: 0 0 5px 0;" id="fetchTitle">🔍 Course Found Successfully!</h4>
-                <ul style="margin: 0; padding-left: 20px; color: #cbd5e1;" id="courseDetails"></ul>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h4 id="fetchTitle" style="margin:0;">🔍 उपलब्ध लाइव बैचेस:</h4>
+                    <input type="text" id="searchBar" class="search-box" style="max-width: 250px; margin:0;" placeholder="बैच सर्च करें..." onkeyup="filterCourses()">
+                </div>
+                <div class="course-grid" id="courseDetails"></div>
             </div>
 
-            <!-- लाइव परीक्षा पोर्टल ब्लॉक -->
+            <!-- लाइव ऑटो-अपडेटिंग PYQ परीक्षा पोर्टल -->
             <div class="quiz-panel" id="quizPanel">
-                <h3 style="color: #fbbf24; text-align: left; border-bottom: 2px solid #334155; padding-bottom: 8px;" id="quizTitle">📋 Real-Time Auto-Updating PYQ Exam</h3>
+                <h3 style="color: #fbbf24; margin-top:0; border-bottom: 2px solid #24324d; padding-bottom: 10px;">📋 लाइव मॉक टेस्ट (Real-Time Random Questions)</h3>
                 
                 <div class="score-card" id="resultCard">
-                    <h3>📊 आपका परीक्षा परिणाम (Scorecard)</h3>
-                    <div style="display:flex; justify-content: space-around; font-weight:bold; font-size:18px;">
-                        <div style="color: #38bdf8;">कुल प्रश्न हल किए: <span id="totalAttempted">0</span></div>
-                        <div style="color: #34d399;">सही उत्तर: <span id="correctCount">0</span></div>
-                    </div>
+                    <h2>📊 आपका स्कोरकार्ड तैयार है!</h2>
+                    <div style="font-size: 20px;">कुल प्रश्न: <span id="totalQ">0</span> | सही उत्तर: <span id="correctQ">0</span></div>
                 </div>
 
-                <div id="questionsContainer">परीक्षा के प्रश्न लाइव लोड हो रहे हैं...</div>
-                <button class="submit-test-btn" id="subBtn" onclick="submitExam()">Submit Test</button>
+                <div id="questionsContainer">सर्वर से प्रश्न तैयार किए जा रहे हैं...</div>
+                <button class="submit-test-btn" onclick="submitExam()">फाइनल टेस्ट सबमिट करें</button>
             </div>
-        </div>
-    </div>
-
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <h3 id="modalPlatformTitle">🔐 सर्वर लॉगिन वेरिफिकेशन</h3>
-            <div class="input-group">
-                <label>रजिस्टर्ड मोबाइल नंबर:</label>
-                <input type="text" id="userMobile" placeholder="अपना नंबर दर्ज करें...">
-            </div>
-            <div class="input-group">
-                <label>अकाउंट पासवर्ड:</label>
-                <input type="password" id="userPassword" placeholder="अपना पासवर्ड दर्ज करें...">
-            </div>
-            <button class="modal-btn" onclick="verifyAndFetch()">Verify & Fetch Course</button>
         </div>
     </div>
 
     <script>
-        let currentPlatform = "";
-        let userAnswers = {};
+        let currentPlatformData = [];
         let correctAnswers = {};
+        let userAnswers = {};
 
-        function openLoginGate(platform) {
-            currentPlatform = platform;
-            document.getElementById('loginModal').style.display = "flex";
-            document.getElementById('modalPlatformTitle').innerText = `🔐 ${platform.toUpperCase()} Server Authorization`;
-        }
-
-        async function verifyAndFetch() {
-            document.getElementById('loginModal').style.display = "none";
-            
-            // 1. कोर्स फ़ेचिंग का काम (courses.json से)
-            try {
-                const response = await fetch('courses.json');
-                const allData = await response.json();
-                const platformData = allData[currentPlatform];
-                
-                if(platformData) {
-                    document.getElementById('fetchTitle').innerText = `🔍 ${platformData.title}`;
-                    const listContainer = document.getElementById('courseDetails');
-                    listContainer.innerHTML = "";
-                    platformData.batches.forEach(batch => {
-                        let li = document.createElement('li');
-                        li.innerText = batch;
-                        listContainer.appendChild(li);
-                    });
-                    document.getElementById('statusPanel').style.display = "block";
-                }
-            } catch (e) { console.log("courses.json missing or local setup"); }
-
-            // 2. लाइव टेस्ट जनरेट करने का काम (Online Educational API से)
+        // पूरी तरह लीगल, जेन्युइन और व्यवस्थित डेटा लोडर फंक्शन
+        async function loadGenuineData(platform) {
+            document.getElementById('statusPanel').style.display = "block";
             document.getElementById('quizPanel').style.display = "block";
+            
+            // आपके द्वारा बनाई गई courses.json फाइल से सुरक्षित डेटा फेच करना
+            try {
+                const res = await fetch('courses.json');
+                const data = await res.json();
+                const platformInfo = data[platform];
+                
+                if(platformInfo) {
+                    document.getElementById('fetchTitle').innerText = `🔍 ${platformInfo.title}`;
+                    currentPlatformData = platformInfo.batches;
+                    displayCourses(currentPlatformData);
+                }
+            } catch(e) {
+                console.log("JSON फ़ेचिंग एरर या लोकल ब्लॉकेज");
+            }
+
+            // लाइव ऑनलाइन सर्वर से मॉक टेस्ट के प्रश्न फेच करना
             fetchLiveQuestions();
         }
 
-        // ऑनलाइन फ्री API से लाइव प्रश्न फेच करने का इंजन
-        async function fetchLiveQuestions() {
-            const container = document.getElementById('questionsContainer');
-            container.innerHTML = "इंटरनेट सर्वर से नए प्रश्न तैयार किए जा रहे हैं, कृपया रुकें...";
-            
-            try {
-                // यह API हर बार बिल्कुल नए 10 रैंडम जनरल नॉलेज/PYQ प्रश्न जनरेट करता है
-                // (नोट: मुफ़्त API होने के कारण स्टेबिलिटी के लिए 10 प्रश्न रखे गए हैं, इसे आसानी से बढ़ाया जा सकता है)
-                const res = await fetch('https://opentdb.com');
-                const data = await res.json();
-                
-                container.innerHTML = "";
-                userAnswers = {};
-                correctAnswers = {};
+        function displayCourses(batches) {
+            const container = document.getElementById('courseDetails');
+            container.innerHTML = "";
+            batches.forEach(batch => {
+                let card = document.createElement('div');
+                card.className = 'course-card-item';
+                card.innerHTML = `<div><strong>${batch}</strong><br><span style="color:#94a3b8; font-size:12px;">लाइव क्लास + PDF नोट्स</span></div>
+                                  <button class="join-btn" onclick="alert('स्टडी पर्पस डेमो: बैच सफलतापूर्वक सिलेक्ट हुआ!')">एक्सेस करें</button>`;
+                container.appendChild(card);
+            });
+        }
 
-                data.results.forEach((q, index) => {
-                    correctAnswers[index] = q.correct_answer;
-                    
-                    // सभी विकल्पों को आपस में मिक्स (Shuffle) करना
-                    let options = [...q.incorrect_answers, q.correct_answer];
-                    options.sort(() => Math.random() - 0.5);
+        // सर्च बार फ़िल्टर लॉजिक
+        function filterCourses() {
+            let txt = document.getElementById('searchBar').value.toLowerCase();
+            let filtered = currentPlatformData.filter(b => b.toLowerCase().includes(txt));
+            displayCourses(filtered);
+        }
 
-                    let qDiv = document.createElement('div');
-                    qDiv.className = 'question';
-                    qDiv.innerHTML = `<p><span class="badge">Q ${index + 1}</span> ${q.question}</p>`;
-
-                    options.forEach(opt => {
-                        let label = document.createElement('label');
-                        label.className = 'option';
